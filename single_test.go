@@ -7,7 +7,7 @@ import (
 )
 
 func TestSingle(t *testing.T) {
-	single := Single{"foo", "bar", "baz"}.Add("qux")
+	single := Single{"foo", "bar", "baz"}.Add("qux").Add("foo")
 	expectedSingle := Single{"foo", "bar", "baz", "qux"}
 
 	if len(single) != 4 {
@@ -18,6 +18,19 @@ func TestSingle(t *testing.T) {
 		t.Errorf("expected single to be equal to %v but was %v", expectedSingle, single)
 	}
 
+}
+
+func TestAppend(t *testing.T) {
+	single := Single{"foo", "bar"}.Append(Single{"baz", "qux"})
+	expectedSingle := Single{"foo", "bar", "baz", "qux"}
+
+	if len(single) != 4 {
+		t.Errorf("expected single length to be %d but was %d", 4, len(single))
+	}
+
+	if !reflect.DeepEqual(single, expectedSingle) {
+		t.Errorf("expected single to be equal to %v but was %v", expectedSingle, single)
+	}
 }
 
 func TestMatch(t *testing.T) {

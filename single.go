@@ -25,7 +25,18 @@ func NewSingleFromJSON(bytes []byte) Single {
 
 // Add a value to the single, returning the new copy
 func (single Single) Add(val string) Single {
+	for _, s := range single {
+		if s == val {
+			return single
+		}
+	}
+
 	return append(single, val)
+}
+
+// Append a single to the end of this single
+func (single Single) Append(other Single) Single {
+	return append(single, other...)
 }
 
 // Match determines if the given value matches the single
