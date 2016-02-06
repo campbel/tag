@@ -55,8 +55,6 @@ func (single Single) arrayAffinity(vals []string) int {
 	for _, val := range vals {
 		if single.Match(val) {
 			count++
-		} else {
-			count--
 		}
 	}
 

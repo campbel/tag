@@ -61,8 +61,8 @@ func TestAffinity(t *testing.T) {
 	}
 
 	affinity = single.affinity("foo", "bar", "qux")
-	if affinity != 1 {
-		t.Errorf("expected affinity to be %d but was %d", 1, affinity)
+	if affinity != 2 {
+		t.Errorf("expected affinity to be %d but was %d", 2, affinity)
 	}
 }
 
